@@ -672,8 +672,12 @@ section .container {
   section .container {
     flex-direction: column;
   }
+  .logo {
+    margin: auto;
+    text-align: center;
+  }
   .logo img {
-    width: 100%;
+    width: 65%;
   }
 }
 
@@ -1035,11 +1039,15 @@ section .container {
     padding: 0;
   }
   .big-title.title h2 {
-    font-size: 40px;
+    font-size: 30px;
   }
   .big-title.title b {
-    font-size: 23px;
+    font-size: 15px;
     margin-bottom: 30px;
+  }
+  .big-title.title p {
+    font-size: 17px;
+    padding: 10px;
   }
   .services {
     padding: 0;
@@ -1060,15 +1068,16 @@ section .container {
   .services-grid {
     display: flex;
     flex-direction: column;
-    padding: 40px;
+    padding: 10px;
+    margin-top: 20px;
   }
   body {
-    font-size: 19px;
+    font-size: 17px;
   }
   .main-button {
     max-width: 300px;
     min-width: max-content;
-    font-size: 21px;
+    font-size: 19px;
   }
   .zigzag {
     margin: 30px auto;
@@ -1076,13 +1085,24 @@ section .container {
   }
   .big-title.title p {
     text-align: center;
-    margin: 20px;
   }
   #about-t {
     padding-bottom: 0;
   }
   .title b {
-    font-size: 25px;
+    font-size: 21px;
+  }
+  .title {
+    margin: 25px auto;
+  }
+  .text p {
+    max-width: 100%;
+  }
+  .service-card h3 {
+    font-size: 22px;
+  }
+  .service-card p {
+    font-size: 17px;
   }
 }
 
@@ -1198,6 +1218,17 @@ html[lang='ru'] .lang-switch-mobile .lang-link[data-lang='ru'] {
     );
   }
   .photo img {
-    width: 100vw;
+    width: auto;
+    height: 500px;
+    object-fit: contain;
+  }
+  .mobile-menu a {
+    font-size: 19px;
+  }
+  .mobile-menu {
+    gap: 5px;
+  }
+  .header-text p {
+    font-size: 17px;
   }
 }
