@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Самошина Юлія | Спеціаліст з психосоматики</title>
+    <meta name="description" content="Самошина Юлія | Спеціаліст з психосоматики">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&display=swap&subset=cyrillic,cyrillic-ext"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-top">
+            <a href="#home" class="brand fade-up" aria-label="На головну">
+                <img src="images/logo.png" alt="Самошина Юлія">
+            </a>
+            <div class="lang-switch" role="navigation" aria-label="Вибір мови">
+                <a href="index-uk.html" class="lang-link" data-lang="uk">УКР</a>
+                <a href="index.html" class="lang-link" data-lang="ru">РУС</a>
+            </div>
+            <button class="burger fade-up d3" id="nav-burger" aria-label="Відкрити меню" aria-controls="mobile-panel"
+                aria-expanded="false"><span></span></button>
+        </div>
+        <nav class="nav" id="site-nav">
+            <div class="container nav-inner">
+                <ul class="menu left fade-up d1" aria-label="Основне меню ліворуч">
+                    <li><a href="#about">Про мене</a></li>
+                    <li><a href="#services">Послуги</a></li>
+                </ul>
+
+                <div class="socials">
+                    <a href="https://t.me/samoshyna_juliya" target="_blank" aria-label="Telegram">
+                        <svg viewBox="0 0 24 24" class="icon">
+                            <path
+                                d="M21.5 2.5L2.7 9.6c-1 .4-1 1.1-.2 1.4l4.6 1.5 1.7 5.5c.2.6.8.8 1.3.4l2.6-2 4.7 3.5c.6.4 1.3.2 1.5-.5l3.9-16c.3-1-.4-1.6-1.3-1.3z"
+                                fill="currentColor" />
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com/samoshyna_juliya" target="_blank" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" class="icon">
+                            <rect x="3" y="3" width="18" height="18" rx="5" ry="5" stroke="currentColor" fill="none"
+                                stroke-width="1.6" />
+                            <circle cx="12" cy="12" r="4" stroke="currentColor" fill="none" stroke-width="1.6" />
+                        </svg>
+                    </a>
+                    <a href="https://www.facebook.com/julyahome/" target="_blank" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" class="icon">
+                            <path d="M13.5 9H15V6h-1.5c-2 0-3 .9-3 3v2H8v3h2v7h3v-7h2.1l.4-3h-2.5V9.3c0-.5.1-.8 1-.8Z"
+                                fill="currentColor" />
+                        </svg>
+                    </a>
+                </div>
+
+                <ul class="menu right fade-up d2" aria-label="Основне меню праворуч">
+                    <li><a href="#meditations">Медитації</a></li>
+                    <li><a href="#contacts">Контакти</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="mobile-panel" id="mobile-panel" role="dialog" aria-modal="true" aria-labelledby="mobile-menu-title">
+            <ul class="mobile-menu container" id="mobile-menu">
+                <li><a href="#about">Про мене</a></li>
+                <li><a href="#services">Послуги</a></li>
+                <li><a href="#meditations">Медитації</a></li>
+                <li><a href="#contacts">Контакти</a></li>
+            </ul>
+            <div class="lang-switch-mobile" role="navigation" aria-label="Вибір мови (мобільний)">
+                <a href="index-uk.html" class="lang-link" data-lang="uk">УКР</a>
+                <a href="index.html" class="lang-link" data-lang="ru">РУС</a>
+            </div>
+            <div class="socials">
+                <a href="https://t.me/samoshyna_juliya" target="_blank" aria-label="Telegram">
+                    <svg viewBox="0 0 24 24" class="icon">
+                        <path
+                            d="M21.5 2.5L2.7 9.6c-1 .4-1 1.1-.2 1.4l4.6 1.5 1.7 5.5c.2.6.8.8 1.3.4l2.6-2 4.7 3.5c.6.4 1.3.2 1.5-.5l3.9-16c.3-1-.4-1.6-1.3-1.3z"
+                            fill="currentColor" />
+                    </svg>
+                </a>
+                <a href="https://instagram.com/samoshyna_juliya" target="_blank" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" class="icon">
+                        <rect x="3" y="3" width="18" height="18" rx="5" ry="5" stroke="currentColor" fill="none"
+                            stroke-width="1.6" />
+                        <circle cx="12" cy="12" r="4" stroke="currentColor" fill="none" stroke-width="1.6" />
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/julyahome/" target="_blank" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" class="icon">
+                        <path d="M13.5 9H15V6h-1.5c-2 0-3 .9-3 3v2H8v3h2v7h3v-7h2.1l.4-3h-2.5V9.3c0-.5.1-.8 1-.8Z"
+                            fill="currentColor" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="header-information">
+            <div class="header-left">
+                <img src="images/photo.jpeg" alt="Самошина Юлія | Спеціаліст з психосоматики">
+            </div>
+            <div class="header-right">
+                <div class="background">
+                    <div class="header-text">
+                        <h1>Самошина Юлія</h1>
+                        <p>Спеціаліст з психосоматики, онкопсихосоматолог, психолог з понад 8-річним досвідом роботи.
+                        </p>
+                        <a href="https://t.me/samoshyna_juliya" class="main-button">Зв’язатися</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <div class="text">
+                <div class="logo"><img src="images/logo.png" alt="Самошина Юлія"></div>
+                <div class="title">
+                    <b>"Я допомагаю людям знаходити внутрішні причини їхніх симптомів та покращувати якість життя."</b>
+                </div>
+                <p>
+                    Моя висока емпатія дозволяє швидко знаходити корінь проблеми: я відчуваю, де звучить правда, а де
+                    людина щось приховує від себе. Це допомагає побачити найважливіше та ефективно працювати із запитом.
+                    Психосоматика — це мій особистий шлях. Через неї я сама навчилася жити яскравіше, вільніше,
+                    відчувати смак життя й розкривати внутрішню силу.
+                    Моє завдання — допомогти вам знайти внутрішню опору, змінити якість життя та досягти стану здоров’я,
+                    радості й цілісності.
+                </p>
+                <div class="socials">
+                    <a href="https://t.me/samoshyna_juliya" target="_blank" aria-label="Telegram">
+                        <svg viewBox="0 0 24 24" class="icon">
+                            <path
+                                d="M21.5 2.5L2.7 9.6c-1 .4-1 1.1-.2 1.4l4.6 1.5 1.7 5.5c.2.6.8.8 1.3.4l2.6-2 4.7 3.5c.6.4 1.3.2 1.5-.5l3.9-16c.3-1-.4-1.6-1.3-1.3z"
+                                fill="currentColor" />
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com/samoshyna_juliya" target="_blank" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" class="icon">
+                            <rect x="3" y="3" width="18" height="18" rx="5" ry="5" stroke="currentColor" fill="none"
+                                stroke-width="1.6" />
+                            <circle cx="12" cy="12" r="4" stroke="currentColor" fill="none" stroke-width="1.6" />
+                        </svg>
+                    </a>
+                    <a href="https://www.facebook.com/julyahome/" target="_blank" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" class="icon">
+                            <path d="M13.5 9H15V6h-1.5c-2 0-3 .9-3 3v2H8v3h2v7h3v-7h2.1l.4-3h-2.5V9.3c0-.5.1-.8 1-.8Z"
+                                fill="currentColor" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="photo"><img src="images/photo4.jpeg" alt="Самошина Юлія | Спеціаліст з психосоматики"></div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="title big-title">
+            <h2>Послуги</h2>
+            <b>Yuliia Samoshyna</b>
+            <p>Психосоматика — це не просто напрям роботи, а шлях до себе. Через розуміння внутрішніх причин симптомів
+                можна відкрити нові сили, повернути радість і відчути смак життя.</p>
+        </div>
+        <div class="services">
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Робота з тілесними симптомами</h3>
+                    <p>Супровід у процесі роботи з різними проявами в тілі, включаючи складні стани та онкологію.</p>
+                    <a href="https://t.me/samoshyna_juliya" target="_blank" class="main-button">Записатися</a>
+                </div>
+                <div class="service-card">
+                    <h3>Фінанси та самореалізація</h3>
+                    <p>Допомагаю у розвитку фінансової сфери, реалізації потенціалу та побудові гармонійних стосунків.
+                    </p>
+                    <a href="https://t.me/samoshyna_juliya" target="_blank" class="main-button">Записатися</a>
+                </div>
+                <div class="service-card">
+                    <h3>Супровід батьків</h3>
+                    <p>Працюю з батьками, допомагаючи зрозуміти симптоми у дітей, побачити їхні глибинні причини та
+                        знайти
+                        шляхи змін.</p>
+                    <a href="https://t.me/samoshyna_juliya" target="_blank" class="main-button">Записатися</a>
+                </div>
+                <div class="service-card">
+                    <h3>Наставництво для спеціалістів</h3>
+                    <p>Супроводжую колег-практиків у професійному розвитку, допомагаю поглиблювати навички та впевнено
+                        розвиватися у практиці.</p>
+                    <a href="https://t.me/samoshyna_juliya" target="_blank" class="main-button">Записатися</a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section id="meditations">
+        <div class="title big-title">
+            <h2>Медитації</h2>
+            <b>Yuliia Samoshyna</b>
+            <p>Простір м’яких практик для відновлення ресурсу та повернення до себе.</p>
+        </div>
+
+        <div class="zigzag">
+            <article class="zigzag-row">
+                <div class="zz-text">
+                    <h3>«Внутрішня опора або Крок до себе» <span>(українською мовою)</span></h3>
+                    <p>Це більше, ніж медитація. Це простір, у якому ти зможеш відпускати напругу,
+                        відновлювати ресурс і знаходити силу в собі. Кожне прослуховування відкриватиме
+                        нові відчуття та допомагатиме повертатися у свій внутрішній дім.</p>
+                    <p>Я бажаю тобі, щоб ця практика стала твоїм тихим якірцем, куди можна повертатися
+                        у моменти втоми, тривоги чи пошуку відповідей. Нехай «Внутрішня опора» дарує
+                        спокій і довіру до життя.</p>
+                    <a class="main-button" href="https://secure.wayforpay.com/button/b52724efd2963" target="_blank"
+                        rel="noopener">Придбати медитацію</a>
+                </div>
+                <div class="zz-media">
+                    <div class="media-pad">
+                        <img src="images/photo3.jpeg" alt="Медитація «Внутрішня опора або Крок до себе»">
+                    </div>
+                </div>
+            </article>
+
+            <article class="zigzag-row reverse">
+                <div class="zz-media">
+                    <div class="media-pad">
+                        <img src="images/photo2.jpeg" alt="Медитація «Сила вдячності»">
+                    </div>
+
+                </div>
+                <div class="zz-text">
+                    <h3>Медитація «Сила вдячності» <span>(українською мовою)</span></h3>
+                    <p>Ця медитація про те, що вдячність — це не просто слова. Це внутрішній стан,
+                        який змінює реальність. Вдячність допомагає відпускати біль і образи,
+                        знаходити сенс навіть у складних подіях і відкривати нові двері в життя.</p>
+                    <p>У практиці ми будемо дякувати за прості речі, які щодня залишаються непоміченими,
+                        і за досвід, який колись болів. Адже саме вдячність має силу закривати незавершене
+                        й давати ресурс рухатися далі.</p>
+                    <p>Ця медитація м’яко проведе тебе через дихання, слова й відчуття,
+                        щоб серце наповнилося теплом, тіло розслабилося, а всередині з’явився простір для нового.</p>
+                    <a class="main-button" href="https://secure.wayforpay.com/button/b45c4abb59c15" target="_blank"
+                        rel="noopener">Придбати медитацію</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section id="about-t">
+        <div class="container">
+            <div class="text">
+                <div class="logo">
+                    <img src="images/logo.png" alt="Самошина Юлія">
+                </div>
+                <div class="title">
+                    <b>Платний Telegram-канал</b>
+                </div>
+                <ul class="zz-list">
+                    <li>🌿 Терапевтичні зустрічі двічі на місяць.</li>
+                    <li>🌿 Я ділюся своїми процесами та проживаннями.</li>
+                    <li>🌿 Практики й усвідомлення.</li>
+                    <li>🌿 Простір, де ви ділитеся власним досвідом.</li>
+                    <li>🌿 За можливості відповідаю й підсвічую важливе.</li>
+                </ul>
+
+                <div class="title">
+                    <b>Я хочу, щоб це було якісне простір, у якому кожен зможе побачити щось своє
+                        і торкнутися глибше до себе.</b>
+                </div>
+                <a class="main-button" href="https://secure.wayforpay.com/button/TELEGRAM_CHANNEL" target="_blank"
+                    rel="noopener">Придбати доступ</a>
+            </div>
+
+            <div class="photo">
+                <img src="images/photo5.jpeg" alt="Платний Telegram-канал">
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contacts">
+        <div class="container">
+            <div class="title big-title">
+                <h2>Контакти</h2>
+                <b>Внутрішня опора</b>
+                <img src="images/logo.png" alt="">
+                <a href="mailto:julyahome@ukr.net">julyahome@ukr.net</a>
+                <a href="tel:+380635050000">+38(063) 50-50-000</a>
+                <h4>Я допомагаю людям знаходити внутрішні причини своїх симптомів і покращувати якість життя.</h4>
+            </div>
+            <div class="socials">
+                <a href="https://t.me/samoshyna_juliya" target="_blank" aria-label="Telegram">
+                    <svg viewBox="0 0 24 24" class="icon">
+                        <path
+                            d="M21.5 2.5L2.7 9.6c-1 .4-1 1.1-.2 1.4l4.6 1.5 1.7 5.5c.2.6.8.8 1.3.4l2.6-2 4.7 3.5c.6.4 1.3.2 1.5-.5l3.9-16c.3-1-.4-1.6-1.3-1.3z"
+                            fill="currentColor" />
+                    </svg>
+                </a>
+                <a href="https://instagram.com/samoshyna_juliya" target="_blank" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" class="icon">
+                        <rect x="3" y="3" width="18" height="18" rx="5" ry="5" stroke="currentColor" fill="none"
+                            stroke-width="1.6" />
+                        <circle cx="12" cy="12" r="4" stroke="currentColor" fill="none" stroke-width="1.6" />
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/julyahome/" target="_blank" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" class="icon">
+                        <path d="M13.5 9H15V6h-1.5c-2 0-3 .9-3 3v2H8v3h2v7h3v-7h2.1l.4-3h-2.5V9.3c0-.5.1-.8 1-.8Z"
+                            fill="currentColor" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const HEADER_OFFSET = 90;
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', (e) => {
+                const id = a.getAttribute('href');
+                const t = document.querySelector(id);
+                if (!t) return;
+                e.preventDefault();
+                const top = Math.max(0, t.getBoundingClientRect().top + window.pageYOffset - HEADER_OFFSET);
+                window.scrollTo({ top, behavior: 'smooth' });
+
+                document.documentElement.classList.remove('nav-open');
+                const burger = document.getElementById('nav-burger');
+                if (burger) burger.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+
+
+        // Mobile toggle
+        const burger = document.getElementById('nav-burger');
+        const root = document.documentElement;
+        const closeMobile = () => {
+            root.classList.remove('nav-open');
+            burger.setAttribute('aria-expanded', 'false');
+        }
+        const openMobile = () => {
+            root.classList.add('nav-open');
+            burger.setAttribute('aria-expanded', 'true');
+        }
+        burger.addEventListener('click', () => {
+            const isOpen = root.classList.toggle('nav-open');
+            burger.setAttribute('aria-expanded', String(isOpen));
+        });
+
+
+        // Close on link click (mobile)
+        document.getElementById('mobile-panel').addEventListener('click', (e) => {
+            if (e.target.matches('a')) closeMobile();
+        });
+
+
+        // Escape to close
+        window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMobile(); });
+    </script>
+</body>
+
+</html>
