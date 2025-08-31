@@ -637,12 +637,12 @@ section .container {
   .header-left img {
     width: 86vw;
     left: auto;
+    height: 450px;
   }
   .header-right {
     height: auto;
     min-height: 280px;
     width: 100vw;
-    margin-top: 30px;
     padding: 0;
   }
   .header-text {
@@ -654,7 +654,7 @@ section .container {
   .header-right .background {
     width: 100%;
     height: max-content;
-    padding: 30px;
+    padding: 0;
   }
   .header-text h1 {
     font-size: 25px;
@@ -1230,5 +1230,11 @@ html[lang='ru'] .lang-switch-mobile .lang-link[data-lang='ru'] {
   }
   .header-text p {
     font-size: 17px;
+  }
+  .header-left {
+    height: 480px;
+  }
+  .header-text {
+    margin-top: 0;
   }
 }
