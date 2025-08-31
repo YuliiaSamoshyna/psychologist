@@ -1067,6 +1067,8 @@ section .container {
   }
   .main-button {
     max-width: 300px;
+    min-width: max-content;
+    font-size: 21px;
   }
   .zigzag {
     margin: 30px auto;
