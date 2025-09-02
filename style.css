@@ -305,7 +305,7 @@ html.nav-open {
     justify-content: space-between;
   }
   .brand img {
-    max-width: 200px;
+    max-width: 165px;
     padding: 10px;
   }
 }
@@ -1232,7 +1232,12 @@ html[lang='ru'] .lang-switch-mobile .lang-link[data-lang='ru'] {
     font-size: 17px;
   }
   .header-left {
-    height: 480px;
+    height: 50vh;
+    margin-top: 125px;
+  }
+  .header-left img {
+    height: 45vh;
+    margin-top: 1vh;
   }
   .header-text {
     margin-top: 0;
