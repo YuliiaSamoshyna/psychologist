@@ -1231,6 +1231,10 @@ html[lang='ru'] .lang-switch-mobile .lang-link[data-lang='ru'] {
   .header-text p {
     font-size: 17px;
   }
+  .header-text p span {
+    display: inline-flex;
+    flex-wrap: nowrap;
+  }
   .header-left {
     height: 50vh;
     margin-top: 125px;
