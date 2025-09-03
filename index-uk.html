@@ -280,12 +280,42 @@
         </div>
     </section>
 
+    <section id="reviews" class="reviews">
+        <div class="title big-title">
+            <h2>Відгуки</h2>
+            <b>Yuliia Samoshyna</b>
+            <p>Ваші відгуки для мене - особлива підтримка. Вони надихають і наповнюють мене ще більше.</p>
+        </div>
+
+        <div class="reviews-wrap">
+            <div class="reviews-bg" aria-hidden="true"></div>
+
+            <div class="carousel" aria-roledescription="carousel" aria-label="Відгуки клієнтів">
+                <button class="nav prev" aria-label="Попередні відгуки">
+                    <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                </button>
+
+                <div class="viewport" tabindex="0">
+                    <ul class="track" role="list"></ul>
+                </div>
+
+                <button class="nav next" aria-label="Наступні відгуки">
+                    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <div class="dots" aria-hidden="true"></div>
+
+            <div class="counter" aria-live="polite" aria-atomic="true"></div>
+        </div>
+    </section>
+
+
 
     <section id="contacts">
         <div class="container">
             <div class="title big-title">
                 <h2>Контакти</h2>
-                <b>Внутрішня опора</b>
                 <img src="images/logo.png" alt="">
                 <a href="mailto:julyahome@ukr.net">julyahome@ukr.net</a>
                 <a href="tel:+380635050000">+38(063) 50-50-000</a>
@@ -361,6 +391,185 @@
         // Escape to close
         window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMobile(); });
     </script>
+
+    <script>
+        /* ===== REVIEWS CAROUSEL ===== */
+        (function () {
+            const IMAGES_COUNT = 21;
+            const PATH = 'images/reviews/';
+
+            const root = document.getElementById('reviews');
+            if (!root) return;
+
+            const track = root.querySelector('.track');
+            const dotsWrap = root.querySelector('.dots');
+            const counterEl = root.querySelector('.counter');
+            const prevBtn = root.querySelector('.prev');
+            const nextBtn = root.querySelector('.next');
+            const viewport = root.querySelector('.viewport');
+
+            // Build slides
+            const slides = [];
+            for (let i = 1; i <= IMAGES_COUNT; i++) {
+                const li = document.createElement('li');
+                li.className = 'slide';
+                li.setAttribute('role', 'listitem');
+
+                const inner = document.createElement('div');
+                inner.className = 'inner';
+
+                const img = document.createElement('img');
+                img.loading = 'lazy';
+                img.decoding = 'async';
+                img.alt = `Отзыв ${i}`;
+                img.src = `${PATH}r${i}.jpeg`;
+
+                inner.appendChild(img);
+                li.appendChild(inner);
+                track.appendChild(li);
+                slides.push(li);
+            }
+
+            // State
+            let index = 0;
+            let perView = 3;
+            let slideW = 0;
+            let autoTimer = null;
+            let isDragging = false;
+            let startX = 0;
+            let lastX = 0;
+            let startTranslate = 0;
+
+            function measure() {
+                // how many visible
+                const vw = viewport.clientWidth;
+                const first = slides[0];
+                if (!first) return;
+                slideW = first.getBoundingClientRect().width + parseFloat(getComputedStyle(track).gap || 0);
+                // estimate perView
+                perView = Math.max(1, Math.round(vw / (slideW - parseFloat(getComputedStyle(track).gap || 0))));
+                // clamp index
+                index = Math.max(0, Math.min(index, slides.length - perView));
+                update(true);
+                buildDots();
+            }
+
+            function buildDots() {
+                const pages = Math.max(1, slides.length - perView + 1);
+                dotsWrap.innerHTML = '';
+                for (let i = 0; i < pages; i++) {
+                    const d = document.createElement('button');
+                    d.className = 'dot' + (i === index ? ' is-active' : '');
+                    d.type = 'button';
+                    d.addEventListener('click', () => goTo(i));
+                    dotsWrap.appendChild(d);
+                }
+            }
+
+            function update(skipAnim = false) {
+                const translateX = -index * slideW;
+                if (skipAnim) track.style.transition = 'none';
+                track.style.transform = `translate3d(${translateX}px,0,0)`;
+                if (skipAnim) requestAnimationFrame(() => track.style.transition = '');
+
+                // active class for kenburns
+                slides.forEach((s, i) => {
+                    const active = (i >= index && i < index + perView);
+                    s.classList.toggle('is-active', active);
+                });
+
+                const pages = Math.max(1, slides.length - perView + 1);
+                counterEl.textContent = `${index + 1} / ${pages}`;
+                // buttons
+                prevBtn.disabled = (index <= 0);
+                nextBtn.disabled = (index >= slides.length - perView);
+                // dots state
+                [...dotsWrap.children].forEach((d, i) => d.classList.toggle('is-active', i === index));
+            }
+
+            function goTo(i) {
+                index = Math.max(0, Math.min(i, slides.length - perView));
+                update();
+                restartAutoplay();
+            }
+            function next() { goTo(index + 1); }
+            function prev() { goTo(index - 1); }
+
+            // Autoplay (pause on hover / focus / tab hidden)
+            function startAutoplay() {
+                stopAutoplay();
+                autoTimer = setInterval(() => {
+                    if (index >= slides.length - perView) { index = -1; } // soft-loop
+                    next();
+                }, 20000);
+            }
+            function stopAutoplay() {
+                if (autoTimer) clearInterval(autoTimer);
+                autoTimer = null;
+            }
+            function restartAutoplay() {
+                stopAutoplay();
+                startAutoplay();
+            }
+
+            // Drag / Swipe
+            function onPointerDown(e) {
+                isDragging = true;
+                startX = (e.touches ? e.touches[0].clientX : e.clientX);
+                lastX = startX;
+                startTranslate = -index * slideW;
+                track.style.transition = 'none';
+                viewport.setPointerCapture?.(e.pointerId || 1);
+            }
+            function onPointerMove(e) {
+                if (!isDragging) return;
+                const x = (e.touches ? e.touches[0].clientX : e.clientX);
+                const dx = x - startX;
+                lastX = x;
+                track.style.transform = `translate3d(${startTranslate + dx}px,0,0)`;
+            }
+            function onPointerUp() {
+                if (!isDragging) return;
+                isDragging = false;
+                track.style.transition = '';
+                const dx = lastX - startX;
+                const threshold = slideW * 0.22;
+                if (dx < -threshold) next();
+                else if (dx > threshold) prev();
+                else update();
+            }
+
+            // Keyboard
+            viewport.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') next();
+                if (e.key === 'ArrowLeft') prev();
+            });
+
+            // Events
+            nextBtn.addEventListener('click', next);
+            prevBtn.addEventListener('click', prev);
+            viewport.addEventListener('mousedown', onPointerDown);
+            window.addEventListener('mousemove', onPointerMove);
+            window.addEventListener('mouseup', onPointerUp);
+            viewport.addEventListener('touchstart', onPointerDown, { passive: true });
+            window.addEventListener('touchmove', onPointerMove, { passive: true });
+            window.addEventListener('touchend', onPointerUp);
+
+            viewport.addEventListener('mouseenter', stopAutoplay);
+            viewport.addEventListener('mouseleave', startAutoplay);
+            viewport.addEventListener('focusin', stopAutoplay);
+            viewport.addEventListener('focusout', startAutoplay);
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) stopAutoplay(); else startAutoplay();
+            });
+            window.addEventListener('resize', () => { measure(); });
+
+            // Init
+            measure();
+            startAutoplay();
+        })();
+    </script>
+
 </body>
 
 </html>
