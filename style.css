@@ -1445,13 +1445,7 @@ html[lang='ru'] .lang-switch-mobile .lang-link[data-lang='ru'] {
   }
 }
 
-.carousel .viewport.dragging {
-  cursor: grabbing;
-  cursor: -webkit-grabbing;
-}
 .carousel .viewport {
-  cursor: grab;
-  cursor: -webkit-grab;
   overflow-x: scroll;
   scrollbar-width: none;
 }
