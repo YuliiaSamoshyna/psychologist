@@ -1444,3 +1444,17 @@ html[lang='ru'] .lang-switch-mobile .lang-link[data-lang='ru'] {
     background: transparent;
   }
 }
+
+.carousel .viewport.dragging {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+}
+.carousel .viewport {
+  cursor: grab;
+  cursor: -webkit-grab;
+  overflow-x: scroll;
+  scrollbar-width: none;
+}
+.carousel .viewport::-webkit-scrollbar {
+  display: none;
+}
