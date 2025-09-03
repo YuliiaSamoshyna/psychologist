@@ -568,6 +568,45 @@
             measure();
             startAutoplay();
         })();
+
+
+        (function () {
+            const track = document.querySelector(".carousel .track");
+            const viewport = document.querySelector(".carousel .viewport");
+
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+
+            viewport.addEventListener("mousedown", (e) => {
+                isDown = true;
+                viewport.classList.add("dragging");
+                startX = e.pageX - viewport.offsetLeft;
+                scrollLeft = viewport.scrollLeft;
+            });
+
+
+            viewport.addEventListener("mouseleave", () => {
+                isDown = false;
+                viewport.classList.remove("dragging");
+            });
+
+
+            viewport.addEventListener("mouseup", () => {
+                isDown = false;
+                viewport.classList.remove("dragging");
+            });
+
+
+            viewport.addEventListener("mousemove", (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - viewport.offsetLeft;
+                const walk = (x - startX) * 1.2;
+                viewport.scrollLeft = scrollLeft - walk;
+            });
+        })();
     </script>
 
 </body>
