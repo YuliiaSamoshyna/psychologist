@@ -747,7 +747,7 @@ section .container {
 
 .big-title.title a {
   font-size: 30px;
-  color: var(--pink);
+  color: var(--accent);
   text-transform: uppercase;
 }
 
@@ -762,7 +762,7 @@ section .container {
 }
 
 .big-title.title img {
-  margin-top: 20px;
+  margin-top: 40px;
   width: 300px;
 }
 
