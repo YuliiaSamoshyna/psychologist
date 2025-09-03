@@ -1445,10 +1445,13 @@ html[lang='ru'] .lang-switch-mobile .lang-link[data-lang='ru'] {
   }
 }
 
+.carousel .viewport.dragging {
+  cursor: auto;
+  cursor: auto;
+}
 .carousel .viewport {
+  cursor: auto;
+  cursor: auto;
   overflow-x: scroll;
   scrollbar-width: none;
-}
-.carousel .viewport::-webkit-scrollbar {
-  display: none;
 }
