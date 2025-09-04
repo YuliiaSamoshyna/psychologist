@@ -1255,10 +1255,12 @@ html[lang='ru'] .lang-switch-mobile .lang-link[data-lang='ru'] {
   .header-left {
     height: 50vh;
     margin-top: 125px;
+    min-width: none;
   }
   .header-left img {
     height: 45vh;
     margin-top: 1vh;
+    min-height: 360px;
   }
   .header-text {
     margin-top: 0;
