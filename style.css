@@ -394,7 +394,7 @@ html.nav-open {
   max-width: 500px;
   height: 580px;
   object-fit: cover;
-  object-position: bottom;
+  object-position: top;
   z-index: 3;
   pointer-events: none;
   outline: 10px solid #fff;
@@ -993,6 +993,10 @@ section .container {
   order: 2;
 }
 
+.reverse .media-pad img {
+  object-position: bottom;
+}
+
 @media (max-width: 1080px) {
   .zigzag-row,
   .zigzag-row.reverse {
@@ -1194,7 +1198,7 @@ html[lang='ru'] .lang-switch-mobile .lang-link[data-lang='ru'] {
 
 @media (max-width: 980px) {
   .lang-switch {
-    display: none;
+    top: 35px;
   }
   .header-top {
     position: fixed;
