@@ -941,8 +941,9 @@ section .container {
   list-style: none;
 }
 .zz-list li {
-  margin: 6px 0;
+  margin: 20px 0;
   font-size: 20px;
+  text-align: center;
 }
 
 .zz-text .main-button {
