@@ -394,7 +394,7 @@ html.nav-open {
   max-width: 500px;
   height: 580px;
   object-fit: cover;
-  object-position: top;
+  object-position: bottom;
   z-index: 3;
   pointer-events: none;
   outline: 10px solid #fff;
@@ -682,9 +682,7 @@ section .container {
   #about-t {
     margin-top: 0;
   }
-  #about {
-    padding-bottom: 0;
-  }
+
   section .container {
     flex-direction: column;
   }
@@ -994,7 +992,7 @@ section .container {
 }
 
 .reverse .media-pad img {
-  object-position: bottom;
+  object-position: center;
 }
 
 @media (max-width: 1080px) {
@@ -1258,13 +1256,14 @@ html[lang='ru'] .lang-switch-mobile .lang-link[data-lang='ru'] {
     flex-wrap: nowrap;
   }
   .header-left {
-    height: 420px;
+    height: 50vh;
     margin-top: 125px;
     min-width: none;
   }
   .header-left img {
+    height: 45vh;
     margin-top: 1vh;
-    min-height: 450px;
+    min-height: 360px;
   }
   .header-text {
     margin-top: 0;
