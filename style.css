@@ -1146,7 +1146,7 @@ section .container {
   display: flex;
   gap: 8px;
   background: #fff;
-  border: 1px solid rgba(97, 147, 206, 0.25);
+  border: 1px solid var(--pink);
   border-radius: 999px;
   padding: 6px 8px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
@@ -1160,7 +1160,7 @@ section .container {
   line-height: 1;
   padding: 8px 10px;
   border-radius: 999px;
-  color: var(--accent);
+  color: var(--pink);
   text-decoration: none;
   transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
 }
@@ -1169,7 +1169,7 @@ section .container {
 }
 html[lang='uk'] .lang-switch .lang-link[data-lang='uk'],
 html[lang='ru'] .lang-switch .lang-link[data-lang='ru'] {
-  background: var(--accent);
+  background: var(--pink);
   color: #fff;
 }
 
@@ -1178,7 +1178,7 @@ html[lang='ru'] .lang-switch .lang-link[data-lang='ru'] {
   gap: 10px;
   margin: 0 0 30px;
   background: #fff;
-  border: 1px solid rgba(97, 147, 206, 0.25);
+  border: 1px solid var(--pink);
   border-radius: 999px;
   padding: 8px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
@@ -1190,7 +1190,7 @@ html[lang='ru'] .lang-switch .lang-link[data-lang='ru'] {
 }
 html[lang='uk'] .lang-switch-mobile .lang-link[data-lang='uk'],
 html[lang='ru'] .lang-switch-mobile .lang-link[data-lang='ru'] {
-  background: var(--accent);
+  background: var(--pink);
   color: #fff;
 }
 
