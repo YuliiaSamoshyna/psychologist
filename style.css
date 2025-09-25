@@ -720,7 +720,7 @@ section .container {
   font-size: 56px;
   font-weight: 300;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--text);
   line-height: 1;
   margin-bottom: 0;
   position: relative;
