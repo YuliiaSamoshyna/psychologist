@@ -22,10 +22,18 @@
             <a href="#home" class="brand fade-up" aria-label="На главную">
                 <img src="images/logo.png" alt="Самошина Юлия">
             </a>
-            <div class="lang-switch" role="navigation" aria-label="Вибір мови">
-                <a href="index-uk.html" class="lang-link" data-lang="uk">УКР</a>
-                <a href="index.html" class="lang-link" data-lang="ru">РУС</a>
+            <div class="lang-dropdown">
+                <button class="lang-btn">
+                    Мова
+                    <span class="arrow-lines"></span>
+                </button>
+                <ul class="lang-menu">
+                    <li><a href="index-uk.html">Українська</a></li>
+                    <li><a href="index.html">Русский</a></li>
+                </ul>
             </div>
+
+
             <button class="burger fade-up d3" id="nav-burger" aria-label="Відкрити меню" aria-controls="mobile-panel"
                 aria-expanded="false"><span></span></button>
         </div>
@@ -74,10 +82,6 @@
                 <li><a href="#meditations">Медитации</a></li>
                 <li><a href="#contacts">Контакты</a></li>
             </ul>
-            <div class="lang-switch-mobile" role="navigation" aria-label="Вибір мови (мобільний)">
-                <a href="index-uk.html" class="lang-link" data-lang="uk">УКР</a>
-                <a href="index.html" class="lang-link" data-lang="ru">РУС</a>
-            </div>
             <div class="socials">
                 <a href="https://t.me/samoshyna_juliya" target="_blank" aria-label="Telegram">
                     <svg viewBox="0 0 24 24" class="icon">
@@ -260,7 +264,7 @@
                 </div>
                 <div class="zz-media">
                     <div class="media-pad">
-                        <img src="images/m1.jpeg" alt="Медитация «Внутренняя опора или Шаг к себе»">
+                        <img src="images/m11.jpeg" alt="Медитация «Внутренняя опора или Шаг к себе»">
                     </div>
                 </div>
             </article>
@@ -268,7 +272,7 @@
             <article class="zigzag-row reverse">
                 <div class="zz-media">
                     <div class="media-pad">
-                        <img src="images/m2.jpeg" alt="Медитация «Сила благодарности»">
+                        <img src="images/m22.jpeg" alt="Медитация «Сила благодарности»">
                     </div>
                 </div>
                 <div class="zz-text reveal-stagger">
@@ -700,6 +704,30 @@
             if (document.readyState === 'complete') init(); else window.addEventListener('load', init);
         })();
     </script>
+
+    <script>
+        document.querySelectorAll('.lang-dropdown').forEach(dropdown => {
+            const btn = dropdown.querySelector('.lang-btn');
+
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdown.classList.toggle('open');
+            });
+
+            dropdown.querySelectorAll('.lang-menu a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    dropdown.classList.remove('open');
+                });
+            });
+        });
+
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.lang-dropdown.open')
+                .forEach(open => open.classList.remove('open'));
+        });
+    </script>
+
 
 
 
