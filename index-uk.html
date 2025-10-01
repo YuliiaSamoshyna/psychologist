@@ -378,43 +378,67 @@
         </svg>
     </button>
 
-    <script>
-        const scrollTopBtn = document.getElementById("scrollTopBtn");
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 600) scrollTopBtn.classList.add("show");
-            else scrollTopBtn.classList.remove("show");
-        });
-        scrollTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+    script>
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
 
-        const HEADER_OFFSET = 90;
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', (e) => {
-                const id = a.getAttribute('href');
-                const t = document.querySelector(id);
-                if (!t) return;
-                e.preventDefault();
-                const top = Math.max(0, t.getBoundingClientRect().top + window.pageYOffset - HEADER_OFFSET);
-                window.scrollTo({ top, behavior: 'smooth' });
-                document.documentElement.classList.remove('nav-open');
-                const burger = document.getElementById('nav-burger');
-                if (burger) burger.setAttribute('aria-expanded', 'false');
-            });
-        });
+    window.addEventListener("scroll", () => {
+    if (window.scrollY > 600) {
+    scrollTopBtn.classList.add("show");
+    } else {
+    scrollTopBtn.classList.remove("show");
+    }
+    });
 
-        // Mobile toggle
-        const burger = document.getElementById('nav-burger');
-        const root = document.documentElement;
-        const closeMobile = () => { root.classList.remove('nav-open'); burger.setAttribute('aria-expanded', 'false'); }
-        burger.addEventListener('click', () => {
-            const isOpen = root.classList.toggle('nav-open');
-            burger.setAttribute('aria-expanded', String(isOpen));
-        });
-        document.getElementById('mobile-panel').addEventListener('click', (e) => { if (e.target.matches('a')) closeMobile(); });
-        window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMobile(); });
+    scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+    const HEADER_OFFSET = 90;
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+    const id = a.getAttribute('href');
+    const t = document.querySelector(id);
+    if (!t) return;
+    e.preventDefault();
+    const top = Math.max(0, t.getBoundingClientRect().top + window.pageYOffset - HEADER_OFFSET);
+    window.scrollTo({ top, behavior: 'smooth' });
+
+    document.documentElement.classList.remove('nav-open');
+    const burger = document.getElementById('nav-burger');
+    if (burger) burger.setAttribute('aria-expanded', 'false');
+    });
+    });
+
+
+
+    // Mobile toggle
+    const burger = document.getElementById('nav-burger');
+    const root = document.documentElement;
+    const closeMobile = () => {
+    root.classList.remove('nav-open');
+    burger.setAttribute('aria-expanded', 'false');
+    }
+    const openMobile = () => {
+    root.classList.add('nav-open');
+    burger.setAttribute('aria-expanded', 'true');
+    }
+    burger.addEventListener('click', () => {
+    const isOpen = root.classList.toggle('nav-open');
+    burger.setAttribute('aria-expanded', String(isOpen));
+    });
+
+
+    // Close on link click (mobile)
+    document.getElementById('mobile-panel').addEventListener('click', (e) => {
+    if (e.target.matches('a')) closeMobile();
+    });
+
+
+    // Escape to close
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMobile(); });
     </script>
 
     <script>
-        /* ===== КАРУСЕЛЬ ВІДГУКІВ ===== */
+        /* ===== REVIEWS CAROUSEL ===== */
         (function () {
             const IMAGES_COUNT = 21;
             const PATH = 'images/reviews/';
@@ -442,7 +466,7 @@
                 const img = document.createElement('img');
                 img.loading = 'lazy';
                 img.decoding = 'async';
-                img.alt = `Відгук ${i}`;
+                img.alt = `Отзыв ${i}`;
                 img.src = `${PATH}r${i}.jpeg`;
 
                 inner.appendChild(img);
@@ -462,11 +486,14 @@
             let startTranslate = 0;
 
             function measure() {
+                // how many visible
                 const vw = viewport.clientWidth;
                 const first = slides[0];
                 if (!first) return;
                 slideW = first.getBoundingClientRect().width + parseFloat(getComputedStyle(track).gap || 0);
+                // estimate perView
                 perView = Math.max(1, Math.round(vw / (slideW - parseFloat(getComputedStyle(track).gap || 0))));
+                // clamp index
                 index = Math.max(0, Math.min(index, slides.length - perView));
                 update(true);
                 buildDots();
@@ -490,23 +517,47 @@
                 track.style.transform = `translate3d(${translateX}px,0,0)`;
                 if (skipAnim) requestAnimationFrame(() => track.style.transition = '');
 
-                slides.forEach((s, i) => s.classList.toggle('is-active', (i >= index && i < index + perView)));
+                // active class for kenburns
+                slides.forEach((s, i) => {
+                    const active = (i >= index && i < index + perView);
+                    s.classList.toggle('is-active', active);
+                });
 
                 const pages = Math.max(1, slides.length - perView + 1);
                 counterEl.textContent = `${index + 1} / ${pages}`;
+                // buttons
                 prevBtn.disabled = (index <= 0);
                 nextBtn.disabled = (index >= slides.length - perView);
+                // dots state
                 [...dotsWrap.children].forEach((d, i) => d.classList.toggle('is-active', i === index));
             }
 
-            function goTo(i) { index = Math.max(0, Math.min(i, slides.length - perView)); update(); restartAutoplay(); }
+            function goTo(i) {
+                index = Math.max(0, Math.min(i, slides.length - perView));
+                update();
+                restartAutoplay();
+            }
             function next() { goTo(index + 1); }
             function prev() { goTo(index - 1); }
 
-            function startAutoplay() { stopAutoplay(); autoTimer = setInterval(() => { if (index >= slides.length - perView) { index = -1; } next(); }, 20000); }
-            function stopAutoplay() { if (autoTimer) clearInterval(autoTimer); autoTimer = null; }
-            function restartAutoplay() { stopAutoplay(); startAutoplay(); }
+            // Autoplay (pause on hover / focus / tab hidden)
+            function startAutoplay() {
+                stopAutoplay();
+                autoTimer = setInterval(() => {
+                    if (index >= slides.length - perView) { index = -1; } // soft-loop
+                    next();
+                }, 20000);
+            }
+            function stopAutoplay() {
+                if (autoTimer) clearInterval(autoTimer);
+                autoTimer = null;
+            }
+            function restartAutoplay() {
+                stopAutoplay();
+                startAutoplay();
+            }
 
+            // Drag / Swipe
             function onPointerDown(e) {
                 isDragging = true;
                 startX = (e.touches ? e.touches[0].clientX : e.clientX);
@@ -533,7 +584,13 @@
                 else update();
             }
 
-            viewport.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') next(); if (e.key === 'ArrowLeft') prev(); });
+            // Keyboard
+            viewport.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') next();
+                if (e.key === 'ArrowLeft') prev();
+            });
+
+            // Events
             nextBtn.addEventListener('click', next);
             prevBtn.addEventListener('click', prev);
             viewport.addEventListener('mousedown', onPointerDown);
@@ -547,40 +604,57 @@
             viewport.addEventListener('mouseleave', startAutoplay);
             viewport.addEventListener('focusin', stopAutoplay);
             viewport.addEventListener('focusout', startAutoplay);
-            document.addEventListener('visibilitychange', () => { if (document.hidden) stopAutoplay(); else startAutoplay(); });
-            window.addEventListener('resize', measure);
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) stopAutoplay(); else startAutoplay();
+            });
+            window.addEventListener('resize', () => { measure(); });
 
+            // Init
             measure();
             startAutoplay();
         })();
 
         (function () {
+            const track = document.querySelector(".carousel .track");
             const viewport = document.querySelector(".carousel .viewport");
-            let isDown = false; let startX; let scrollLeft;
-            viewport.addEventListener("mousedown", (e) => { isDown = true; viewport.classList.add("dragging"); startX = e.pageX - viewport.offsetLeft; scrollLeft = viewport.scrollLeft; });
-            viewport.addEventListener("mouseleave", () => { isDown = false; viewport.classList.remove("dragging"); });
-            viewport.addEventListener("mouseup", () => { isDown = false; viewport.classList.remove("dragging"); });
-            viewport.addEventListener("mousemove", (e) => { if (!isDown) return; e.preventDefault(); const x = e.pageX - viewport.offsetLeft; const walk = (x - startX) * 1.2; viewport.scrollLeft = scrollLeft - walk; });
-        })();
-    </script>
 
-    <script>
-        // Випадаюче меню мов
-        document.querySelectorAll('.lang-dropdown').forEach(dropdown => {
-            const btn = dropdown.querySelector('.lang-btn');
-            btn.addEventListener('click', (e) => { e.stopPropagation(); dropdown.classList.toggle('open'); btn.setAttribute('aria-expanded', dropdown.classList.contains('open')); });
-            dropdown.querySelectorAll('.lang-menu a').forEach(link => {
-                link.addEventListener('click', () => { dropdown.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); });
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+
+            viewport.addEventListener("mousedown", (e) => {
+                isDown = true;
+                viewport.classList.add("dragging");
+                startX = e.pageX - viewport.offsetLeft;
+                scrollLeft = viewport.scrollLeft;
             });
-        });
-        document.addEventListener('click', () => {
-            document.querySelectorAll('.lang-dropdown.open').forEach(open => open.classList.remove('open'));
-            document.querySelectorAll('.lang-btn[aria-expanded="true"]').forEach(b => b.setAttribute('aria-expanded', 'false'));
-        });
+
+
+            viewport.addEventListener("mouseleave", () => {
+                isDown = false;
+                viewport.classList.remove("dragging");
+            });
+
+
+            viewport.addEventListener("mouseup", () => {
+                isDown = false;
+                viewport.classList.remove("dragging");
+            });
+
+
+            viewport.addEventListener("mousemove", (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - viewport.offsetLeft;
+                const walk = (x - startX) * 1.2;
+                viewport.scrollLeft = scrollLeft - walk;
+            });
+        })();
+
     </script>
 
     <script>
-        // Анімації появи
         (function () {
             const items = document.querySelectorAll('.reveal,.reveal-stagger');
             if (!items.length) return;
@@ -595,6 +669,29 @@
             if (document.readyState === 'complete') init(); else window.addEventListener('load', init);
         })();
     </script>
+
+    <script>
+        document.querySelectorAll('.lang-dropdown').forEach(dropdown => {
+            const btn = dropdown.querySelector('.lang-btn');
+
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdown.classList.toggle('open');
+            });
+
+            dropdown.querySelectorAll('.lang-menu a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    dropdown.classList.remove('open');
+                });
+            });
+        });
+
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.lang-dropdown.open')
+                .forEach(open => open.classList.remove('open'));
+        });
+    </script>
+
 </body>
 
 </html>

@@ -28,8 +28,8 @@
                     <span class="arrow-lines"></span>
                 </button>
                 <ul class="lang-menu">
-                    <li><a href="index-uk.html">Українська</a></li>
-                    <li><a href="index.html">Русский</a></li>
+                    <li role="none"><a role="menuitem" href="index-uk.html" aria-current="page">Українська</a></li>
+                    <li role="none"><a role="menuitem" href="index.html">Русский</a></li>
                 </ul>
             </div>
 
@@ -370,7 +370,6 @@
         </div>
     </section>
 
-
     <section id="contacts" class="reveal in-view">
         <div class="container">
             <div class="title big-title reveal-stagger">
@@ -410,8 +409,6 @@
             <path d="M6 14l6-6 6 6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
     </button>
-
-
 
     <script>
         const scrollTopBtn = document.getElementById("scrollTopBtn");
@@ -716,7 +713,6 @@
 
             dropdown.querySelectorAll('.lang-menu a').forEach(link => {
                 link.addEventListener('click', (e) => {
-                    e.preventDefault();
                     dropdown.classList.remove('open');
                 });
             });
@@ -727,9 +723,6 @@
                 .forEach(open => open.classList.remove('open'));
         });
     </script>
-
-
-
 
 </body>
 
