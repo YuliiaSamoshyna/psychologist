@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Самошина Юлія | Спеціалістка з психосоматики</title>
+    <title>Самошина Юлія | Спеціаліст з психосоматики</title>
     <meta name="description"
-        content="Самошина Юлія — психолог, онкопсихосоматолог, спеціалістка з психосоматики з понад 9-річним досвідом." />
+        content="Самошина Юлія — психолог, онкопсихосоматолог, спеціаліст з психосоматики з понад 9-річним досвідом." />
 
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;700&display=swap"
@@ -115,7 +115,7 @@
                 <div class="background">
                     <div class="header-text reveal-stagger">
                         <h1>Самошина Юлія</h1>
-                        <p>Спеціалістка з психосоматики, онкопсихосоматолог, психолог із понад <span>9‑річним</span>
+                        <p>Спеціаліст з психосоматики, онкопсихосоматолог, психолог із понад <span>9‑річним</span>
                             досвідом.</p>
                         <div class="title big-title reveal-stagger">
                             <h2>Жива правда</h2>
@@ -179,7 +179,7 @@
             </div>
 
             <div class="photo">
-                <img src="images/photo.jpeg" alt="Самошина Юлія — спеціалістка з психосоматики" />
+                <img src="images/photo.jpeg" alt="Самошина Юлія — спеціаліст з психосоматики" />
             </div>
         </div>
     </section>
@@ -378,63 +378,63 @@
         </svg>
     </button>
 
-    script>
-    const scrollTopBtn = document.getElementById("scrollTopBtn");
+    <script>
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
 
-    window.addEventListener("scroll", () => {
-    if (window.scrollY > 600) {
-    scrollTopBtn.classList.add("show");
-    } else {
-    scrollTopBtn.classList.remove("show");
-    }
-    });
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 600) {
+                scrollTopBtn.classList.add("show");
+            } else {
+                scrollTopBtn.classList.remove("show");
+            }
+        });
 
-    scrollTopBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-    const HEADER_OFFSET = 90;
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', (e) => {
-    const id = a.getAttribute('href');
-    const t = document.querySelector(id);
-    if (!t) return;
-    e.preventDefault();
-    const top = Math.max(0, t.getBoundingClientRect().top + window.pageYOffset - HEADER_OFFSET);
-    window.scrollTo({ top, behavior: 'smooth' });
+        scrollTopBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+        const HEADER_OFFSET = 90;
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', (e) => {
+                const id = a.getAttribute('href');
+                const t = document.querySelector(id);
+                if (!t) return;
+                e.preventDefault();
+                const top = Math.max(0, t.getBoundingClientRect().top + window.pageYOffset - HEADER_OFFSET);
+                window.scrollTo({ top, behavior: 'smooth' });
 
-    document.documentElement.classList.remove('nav-open');
-    const burger = document.getElementById('nav-burger');
-    if (burger) burger.setAttribute('aria-expanded', 'false');
-    });
-    });
-
-
-
-    // Mobile toggle
-    const burger = document.getElementById('nav-burger');
-    const root = document.documentElement;
-    const closeMobile = () => {
-    root.classList.remove('nav-open');
-    burger.setAttribute('aria-expanded', 'false');
-    }
-    const openMobile = () => {
-    root.classList.add('nav-open');
-    burger.setAttribute('aria-expanded', 'true');
-    }
-    burger.addEventListener('click', () => {
-    const isOpen = root.classList.toggle('nav-open');
-    burger.setAttribute('aria-expanded', String(isOpen));
-    });
+                document.documentElement.classList.remove('nav-open');
+                const burger = document.getElementById('nav-burger');
+                if (burger) burger.setAttribute('aria-expanded', 'false');
+            });
+        });
 
 
-    // Close on link click (mobile)
-    document.getElementById('mobile-panel').addEventListener('click', (e) => {
-    if (e.target.matches('a')) closeMobile();
-    });
+
+        // Mobile toggle
+        const burger = document.getElementById('nav-burger');
+        const root = document.documentElement;
+        const closeMobile = () => {
+            root.classList.remove('nav-open');
+            burger.setAttribute('aria-expanded', 'false');
+        }
+        const openMobile = () => {
+            root.classList.add('nav-open');
+            burger.setAttribute('aria-expanded', 'true');
+        }
+        burger.addEventListener('click', () => {
+            const isOpen = root.classList.toggle('nav-open');
+            burger.setAttribute('aria-expanded', String(isOpen));
+        });
 
 
-    // Escape to close
-    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMobile(); });
+        // Close on link click (mobile)
+        document.getElementById('mobile-panel').addEventListener('click', (e) => {
+            if (e.target.matches('a')) closeMobile();
+        });
+
+
+        // Escape to close
+        window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMobile(); });
     </script>
 
     <script>
